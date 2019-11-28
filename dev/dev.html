@@ -29,7 +29,69 @@
 	================================================== -->
 	<link rel="shortcut icon" href="favicon.ico" >
 
-
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font: 400 15px/1.8 "Lato", sans-serif;
+          color: #777;
+        }
+        
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+          position: relative;
+          opacity: 0.95;
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        
+        }
+        .bgimg-1 {
+          background-image: url("images/intro-bg.jpg");
+          min-height: 100%;
+        }
+        
+        .bgimg-2 {
+          background-image: url("img_parallax2.jpg");
+          min-height: 400px;
+        }
+        
+        .bgimg-3 {
+          background-image: url("img_parallax3.jpg");
+          min-height: 400px;
+        }
+        
+        .caption {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 100%;
+          text-align: center;
+          color: #000;
+        }
+        
+        .caption span.border {
+          background-color: #111;
+          color: #fff;
+          padding: 18px;
+          font-size: 25px;
+          letter-spacing: 10px;
+        }
+        
+        h3 {
+          letter-spacing: 5px;
+          text-transform: uppercase;
+          font: 20px "Lato", sans-serif;
+          color: #111;
+        }
+        
+        /* Turn off parallax scrolling for tablets and phones */
+        @media only screen and (max-device-width: 1024px) {
+          .bgimg-1, .bgimg-2, .bgimg-3 {
+            background-attachment: scroll;
+          }
+        }
+        </style>
 </head>
 
 <body data-spy="scroll" data-target="#nav-wrap">
@@ -55,7 +117,7 @@
                <ul id="nav" class="nav">
 	               <li><a href="#intro">Home</a></li>
 	               <li><a href="#services">Services</a></li>
-	               <li><a href="#portfolio">Portfolio</a></li>
+	               <li><a href="#portfolio">Projects</a></li>
 	               <li><a href="#journal">Journal</a></li>
                   <li><a href="#about">About Us</a></li>
                   <li><a href="#contact">Contact</a></li>
@@ -69,7 +131,7 @@
 
    </header> <!-- Header End -->
 
-
+   <div class="bgimg-1">
    <!-- Intro Section
    ================================================== -->
    <section id="intro">
@@ -85,7 +147,7 @@
 					   <div class="col full">
 						   <div class="slider-text">
                         <h2>Stay ahead of the future with <span>pseudostem</span>.</h2>
-							   <p>Hello, we are <span>pseudostem</span>. We specialize in connecting you to the world of <span>innovation</span> and <span>discovery</span></p>
+							   <p>Welcome to pseudostem, where reality is more than just your perception.</span></p>
 						   </div>
 					   </div>
 				   </div>
@@ -96,8 +158,8 @@
 				   <div class="row">
 					   <div class="col full">
 						   <div class="slider-text">
-							   <h2>We specialize in connecting <span>you</span> to the world of <span>innovation</span> and <span>discovery</span></h2>
-							   <p>Understanding cutting edge research from science, technology, engineering, and mathematics (STEM) shouldn't be as hard as it is.</p>
+							   <h2>We specialize in connecting <span style white-space="wrap" overflow-x="auto">you</span> to the world of <span>innovation</span> and <span>discovery</span></h2>
+							   <p>Equipping yourself or your business with cutting-edge research from science, technology, engineering, and mathematics (STEM) isn't as hard as it seems.</p>
 						   </div>
 					   </div>
 				   </div>
@@ -108,7 +170,7 @@
 	   <!-- Flexslider End-->
 
    </section> <!-- Intro Section End-->
-
+</div>
 
    <!-- Services Section
    ================================================== -->
@@ -118,14 +180,12 @@
 
          <div class="col one-third">
             <h2>Services</h2>
-            <p class="desc">Our list of awesome services.</p>
+            <p class="desc">Placeholder: tag for services</p>
          </div>
 
          <div class="col two-thirds">
             <div class="intro">
-             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-              deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.
+             <p>Placeholder: description of services
               </p>
             </div>
          </div>
@@ -137,45 +197,33 @@
          <div class="services-wrapper">
 
             <div class="col">
-               <h2><i class="icon-desktop"></i>Webdesign</h2>
-               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-               deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-               At vero eos et accusamus et molestias iusto odio dignissimos.</p>
+               <h2><i class="icon-desktop"></i>service1</h2>
+               <p>Placeholder: description of service</p>
             </div>
 
             <div class="col">
-               <h2><i class="icon-star"></i>Branding</h2>
-               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-               deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-               At vero eos et accusamus et iusto odio dignissimos.</p>
+               <h2><i class="icon-star"></i>service2</h2>
+               <p>Placeholder: description of service</p>
             </div>
 
             <div class="col m-first">
-               <h2><i class="icon-camera"></i>Photography</h2>
-               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-               deleniti atque corrupti quos dolores et molestias quas molestias excepturi sint occaecati cupiditate.
-               At vero eos et accusamus et iusto odio dignissimos.</p>
+               <h2><i class="icon-camera"></i>service3</h2>
+               <p>Placeholder: description of service</p>
             </div>
 
             <div class="col first">
-               <h2><i class="icon-globe"></i>Web Development</h2>
-               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-               deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-               At vero eos et accusamus et iusto odio molestias dignissimos.</p>
+               <h2><i class="icon-globe"></i>service4</h2>
+               <p>Placeholder: description of service</p>
             </div>
 
             <div class="col m-first">
-               <h2><i class=" icon-list-alt"></i>User Interface</h2>
-               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-               deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-               At vero eos et accusamus et iusto odio dignissimos.</p>
+               <h2><i class=" icon-list-alt"></i>service5</h2>
+               <p>Placeholder: description of service</p>
             </div>
 
             <div class="col">
-               <h2><i class="icon-print"></i>Printing</h2>
-               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-               deleniti atque corrupti molestias quos dolores et quas molestias excepturi sint occaecati cupiditate.
-               At vero eos et accusamus et iusto odio dignissimos.</p>
+               <h2><i class="icon-print"></i>service6</h2>
+               <p>Placeholder: description of service</p>
             </div>
 
          </div> <!-- Services-Wrapper End -->
@@ -184,7 +232,7 @@
 
    </section> <!-- Services Section End -->
 
-
+<div class="bgimg-1">
    <!-- Portfolio Section
    ================================================== -->
    <section id="portfolio">
@@ -192,12 +240,10 @@
       <div class="row section-head">
          <div class="col full">
 
-            <h2>Portfolio</h2>
+            <h2>Projects</h2>
             <p class="desc">Check out our latest projects.</p>
 
-            <p class="intro">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.
+            <p class="intro">Placeholder: description of projects
             </p>
 
          </div>
@@ -212,7 +258,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-01"><img src="images/portfolio/cosmic-sneakers.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Cosmic Sneakers</a></h5>
+						   <h5><a href="#">project1</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -221,7 +267,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-02"><img src="images/portfolio/milk-splash.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Milk Splash</a></h5>
+						   <h5><a href="#">project2</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -230,7 +276,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-03"><img src="images/portfolio/eve.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Eve</a></h5>
+						   <h5><a href="#">project3</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -239,7 +285,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-04"><img src="images/portfolio/sneaker-splash.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Sneaker Splash</a></h5>
+						   <h5><a href="#">project4</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -248,7 +294,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-05"><img src="images/portfolio/judah.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Judah</a></h5>
+						   <h5><a href="#">project5</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -257,7 +303,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-06"><img src="images/portfolio/vector-flower.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Vector Flower</a></h5>
+						   <h5><a href="#">project6</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -266,7 +312,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-07"><img src="images/portfolio/clock.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Clock</a></h5>
+						   <h5><a href="#">project7</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -275,7 +321,7 @@
                <div class="item-wrap">
 					   <a href="#" data-reveal-id="modal-08"><img src="images/portfolio/fields.jpg" alt=""/></a>
 					   <div class="portfolio-item-meta">
-						   <h5><a href="#">Fields</a></h5>
+						   <h5><a href="#">project8</a></h5>
 					   </div>
                </div>
 			   </div>
@@ -284,7 +330,7 @@
 
 
 		</div> <!-- End Row -->
-
+    </div>
 
       <!-- Modal Popup
 	   =========================================================== -->
@@ -295,13 +341,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-cosmic-sneakers.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>The Cosmic Sneakers</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Branding, Web Design</span>
+			   <h4>project1</h4>
+			   <p>Placeholder: description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories1</span>
 		   </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -313,13 +359,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-milk-splash.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>Milk Splash</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Branding, Web Design</span>
+			   <h4>project2</h4>
+			   <p>Placeholder: description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories2</span>
          </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -331,13 +377,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-eve.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>Eve</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Photography, Branding</span>
+			   <h4>project3</h4>
+			   <p>Placeholder: description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories3</span>
          </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -349,13 +395,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-sneaker-splash.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>Sneaker Splash</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Photography, Branding</span>
+			   <h4>project4</h4>
+			   <p>Placeholder: Description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories4</span>
          </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -367,13 +413,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-judah.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>Judah</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Photography, Web Design</span>
+			   <h4>project5</h4>
+               <p>Placeholder: Description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories5</span>
          </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -385,13 +431,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-vector-flower.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>Vector Flower</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Branding, Web Design</span>
+			   <h4>project6</h4>
+               <p>Placeholder: Description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories6</span>
          </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -403,13 +449,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-clock.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>Clock</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Branding, Web Design</span>
+			   <h4>project7</h4>
+               <p>Placeholder: Description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories7</span>
          </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -421,13 +467,13 @@
 		   <img class="scale-with-grid" src="images/portfolio/modals/m-fields.jpg" alt="" />
 
 		   <div class="description-box">
-			   <h4>Fields</h4>
-			   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-            <span class="categories"><i class="icon-tag"></i>Photography</span>
+			   <h4>project8</h4>
+               <p>Placeholder: Description of project</p>
+            <span class="categories"><i class="icon-tag"></i>categories8</span>
          </div>
 
          <div class="link-box">
-            <a href="http://www.behance.net">Details</a>
+            <a href="http://www.pseudostem.com">Details</a>
 		      <a class="close-reveal-modal">Close</a>
          </div>
 
@@ -442,7 +488,7 @@
       <div class="row section-head">
          <div class="col full">
             <h2>Journal</h2>
-            <p class="desc">Our latest posts and rants.</p>
+            <p class="desc">Placeholder: description of journal</p>
          </div>
       </div>
 
@@ -459,13 +505,13 @@
                </div>
 
                <div class="col g-9 offset-1 entry-title">
-                  <h3><a href="blog-single.html">Proin gravida nibh vel velit auctor aliquet Aenean sollicitudin auctor.</a></h3>
+                  <h3><a href="blog-single.html">Placeholder: journal title</a></h3>
                </div>
 
                <div class="col g-2">
                   <p class="post-meta">
-                     <time pubdate="" class="post-date" datetime="2013-08-19">Aug 19, 2013</time>
-                     <span class="dauthor">By Sakura Haruno</span>
+                     <time pubdate="" class="post-date" datetime="2013-08-19">Aug 19, 2019</time>
+                     <span class="dauthor">Placeholder: journal author</span>
                   </p>
                </div>
 
@@ -474,9 +520,7 @@
             <div class="row">
 
                <div class="col g-9 offset-1 post-content">
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                  deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.
+                  <p>Placeholder: description of journal post
                   <a href="blog-single.html" class="more-link">Read More<i class="icon-angle-right"></i></a></p>
                </div>
 
@@ -494,13 +538,13 @@
                </div>
 
                <div class="col g-9 offset-1 entry-title">
-                  <h3><a href="blog-single.html">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed.</a></h3>
+                  <h3><a href="blog-single.html">Placeholder: journal title</a></h3>
                </div>
 
                <div class="col g-2">
                   <p class="post-meta">
-                     <time pubdate="" class="post-date" datetime="2013-08-09">Aug 9, 2013</time>
-                     <span class="dauthor">By John Doe</span>
+                     <time pubdate="" class="post-date" datetime="2013-08-09">Aug 9, 2019</time>
+                     <span class="dauthor">Placeholder: journal author</span>
                   </p>
                </div>
 
@@ -509,9 +553,7 @@
             <div class="row">
 
                <div class="col g-9 offset-1 post-content">
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                  deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.
+                <p>Placeholder: description of journal post
                   <a href="blog-single.html" class="more-link">Read More<i class="icon-angle-right"></i></a></p>
                </div>
 
@@ -529,13 +571,13 @@
                </div>
 
                <div class="col g-9 offset-1 entry-title">
-                  <h3><a href="blog-single.html">Quis autem vel esse eum iure reprehenderit qui in ea voluptate velit esse.</a></h3>
+                  <h3><a href="blog-single.html">Placeholder: journal title</a></h3>
                </div>
 
                <div class="col g-2">
                   <p class="post-meta">
-                     <time pubdate="" class="post-date" datetime="2013-08-07">Aug 7, 2013</time>
-                     <span class="dauthor">By Naruto Uzumaki</span>
+                     <time pubdate="" class="post-date" datetime="2013-08-07">Aug 7, 2019</time>
+                     <span class="dauthor">journal author</span>
                   </p>
                </div>
 
@@ -544,9 +586,7 @@
             <div class="row">
 
                <div class="col g-9 offset-1 post-content">
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                  deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.
-                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.
+                <p>Placeholder: description of journal post
                   <a href="blog-single.html" class="more-link">Read More<i class="icon-angle-right"></i></a></p>
                </div>
 
@@ -567,14 +607,11 @@
 
          <div class="col one-fourth">
             <h2>About Us</h2>
-            <p class="desc">This is what we are.</p>
+            <p class="desc">Placeholder: tag of about us</p>
          </div>
 
          <div class="col three-fourths">
-             <p class="intro">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-             nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-             cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
-             ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. </p>
+             <p class="intro">Placeholder: description of about us</p>
          </div>
 
       </div>
@@ -588,35 +625,25 @@
          <div class="col">
             <h4>Explore.</h4>
 
-            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-            nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-            cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+            <p>Placeholder: description of work process</p>
 			</div>
 
          <div class="col">
             <h4>Design.</h4>
 
-            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-            nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-            cursus a sit amet mauris. Morbi accumsan ipsum velit. Duis sed odio sit.
-            </p>
+            <p>Placeholder: description of work process</p>
 			</div>
 
          <div class="col m-first">
             <h4>Develop.</h4>
 
-            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-            nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-            cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+            <p>Placeholder: description of work process</p>
 			</div>
 
          <div class="col">
             <h4>Deliver.</h4>
 
-            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-            nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-            cursus a sit amet mauris. Morbi accumsan ipsum velit. Duis sed odio sit.
-            </p>
+            <p>Placeholder: description of work process</p>
 			</div>
 
       </div> <!-- Process Wrap End -->
@@ -634,8 +661,8 @@
             <img src="images/team/team-img-01.jpg" alt=""/>
 
             <div class"member-name">
-               <h5>Naruto Uzumaki</h5>
-               <span>Director</span>
+               <h5>Member1</h5>
+               <span>Title1</span>
             </div>
 
             <ul class="member-social">
@@ -653,8 +680,8 @@
             <img src="images/team/team-img-02.jpg" alt=""/>
 
             <div class"member-name">
-               <h5>Sakura Haruno</h5>
-               <span>Director</span>
+               <h5>Member2</h5>
+               <span>Title2</span>
             </div>
 
             <ul class="member-social">
@@ -672,8 +699,8 @@
             <img src="images/team/team-img-03.jpg" alt=""/>
 
             <div class"member-name">
-               <h5>Sasuke Uchiha</h5>
-               <span>Senior Web Designer</span>
+               <h5>Member3</h5>
+               <span>Title3</span>
             </div>
 
             <ul class="member-social">
@@ -691,8 +718,8 @@
             <img src="images/team/team-img-03.jpg" alt=""/>
 
             <div class"member-name">
-               <h5>Shikamaru Nara</h5>
-               <span>Web Designer</span>
+               <h5>Member4</h5>
+               <span>Title4</span>
             </div>
 
             <ul class="member-social">
@@ -724,13 +751,12 @@
             <div class="client-author">
                <img src="images/client-img.png" alt="" />
                <div class="name">
-                  <p>John Doe<span>Designer</span></p>
+                  <p>Cliet1<span>Client Title</span></p>
                </div>
             </div>
 
 		      <div class="client-cite">
-			      <p>Phasellus - ut augue at sapien bibendum bibendum amet magna. Aenean condimentum, lacus sit amet luctus lobortis,
-               enim tellus ultrices elit, amet consequat enim elit noneas.</p>
+			      <p>Placeholder: testimonial</p>
 		      </div>
 
          </div>
@@ -740,15 +766,12 @@
             <div class="client-author">
                <img src="images/client-img.png" alt="" />
                <div class="name">
-                  <p>Michael Smith<span>CEO</span></p>
+                  <p>Client2<span>Client Title</span></p>
                </div>
             </div>
 
 		      <div class="client-cite">
-			      <p>Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
-               acus duis in dictumst non integer. Elit, sed scelerisque odio tortor, sed platea dis.
-               Aenean condimentum, lacus sit amet luctus lobortis,
-               enim tellus ultrices elit.</p>
+			      <p>Placeholder: testimonial</p>
 		      </div>
 
          </div>
@@ -758,32 +781,31 @@
 
    </section> <!-- About Section End-->
 
-   <!-- FUTURE DEV
-    ==============================================
-   //Call-to-Action Section
-   ==================================================\\
+   <!-- Call-to-Action Section
+   ================================================== -->
    <section id="call-to-action">
 
       <div class="row">
 
          <div class="col three-fourths">
 
-            <h2><a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">Get Involved!</a></h2>
-            <p>Looking to break into research and technology? We are always happy to collaborate and bridge our community with yours. 
+            <h2><a href="#contact">Get Involved!</a></h2>
+            <p>Looking to break into research and technology? Want to publish in our Journal? Or just have a question you want answered? We are always happy to collaborate and bridge our community with yours. 
 			
          </div>
 
          <div class="col one-fourth action">
 
-            <a href="#" class="button">Contact Us</a>
+            <a href="#contact" class="button">Contact Us</a>
 
          </div>
 
       </div>
 
 
-   </section> //Call-to-Action Section End\\
+   </section> <!-- Call-to-Action Section End -->
 
+   <!-- FUTURE DEV
    // Map Section
    ==================================================\\
    <section id="map">
@@ -883,12 +905,16 @@
                <li>&copy; 2014 Kreative</li>
                <li>Design by <a href="http://www.styleshout.com/" title="Styleshout">Styleshout</a></li>               
             </ul>
+            <ul class="copyright">
+                <li>&copy; 2019 Pseudostem</li>
+                <li>Disclaimer: All content published on this website is property of &copy; Pseudostem excluding to website source code and images. </a></li>               
+             </ul>
          </div>
 
          <div class="col g-5 pull-right">
             <ul class="social-links">
                <li><a href="#"><i class="icon-facebook"></i></a></li>
-               <li><a href="#"><i class="icon-twitter"></i></a></li>
+               <li><a href="https://twitter.com/pseudostemist"><i class="icon-twitter"></i></a></li>
                <li><a href="#"><i class="icon-google-plus-sign"></i></a></li>
                <li><a href="#"><i class="icon-linkedin"></i></a></li>
                <li><a href="#"><i class="icon-skype"></i></a></li>
