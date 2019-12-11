@@ -510,7 +510,7 @@ ul#nav li.active a { color: #11ABB0; }
 #about .section-head h2,
 #about h4, #about h5 { color: #0f9095; }
 #about .section-head p.desc { color: #999999; }
-#about .section-head .intro { color: #A3A3A3; }
+#about .section-head .intro { color: #A3A3A3; font: 24px/30px montserrat-regular, sans-serif; }
 #about h3 {
    font: 24px/30px montserrat-regular, sans-serif;
    margin-top: 24px;
