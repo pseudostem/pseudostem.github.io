@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Troop Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+ <h1>Troop Calculator Debug</h1>
+  <div class="layout-grid">
+    <div class="left-side">
+
+  <!-- 🎯 Section 1: Leadership / Authority / Dominance -->
+  <div class="filters-panel">
+    <div class="vertical-form">
+      <div class="input-group-inline">
+        <label for="leadership">Leadership</label>
+        <input type="number" id="leadership" value="1000" />
+      </div>
+      <div class="input-group-inline">
+        <label for="authority">Authority</label>
+        <input type="number" id="authority" value="1000" />
+      </div>
+      <div class="input-group-inline">
+        <label for="dominance">Dominance</label>
+        <input type="number" id="dominance" value="1000" />
+      </div>
+    </div>
+  </div>
+
+  <!-- 💰 Section 2: Troop Cost Estimator -->
+<div class="filters-panel">
+  <div class="section-heading">
+    <h3>Troop Cost Estimator</h3>
+    <p>Input Rider II Cost per Troop to Estimate Training Costs</p>
+  </div>
+
+  <div class="vertical-form">
+    <div class="input-group-inline">
+      <label for="marches">
+        Marches
+        <span class="info-icon" data-tooltip="Number of marches with calculated army">ⓘ</span>
+      </label>
+      <input type="number" id="marches" value="1" min="1" />
+    </div>
+
+    <div class="input-group-inline">
+      <label for="rider-cost">
+        Cost
+        <span class="info-icon" data-tooltip="Silver Cost per 1 Rider II">ⓘ</span>
+      </label>
+      <input type="text" id="rider-cost" value="1000" />
+    </div>
+
+<div class="time-row">
+  <div class="time-label">
+    <label for="rider-minutes">Time</label>
+    <span class="info-icon" data-tooltip="Training Cost per 1 Rider II">ⓘ</span>
+  </div>
+  <div class="time-inputs">
+    <input type="text" id="rider-minutes" value="5" maxlength="2" />
+    <span>m</span>
+    <input type="text" id="rider-seconds" value="57" maxlength="2" />
+    <span>s</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+    <div class="input-group-inline">
+      <label for="training-cap">
+        Training Limit
+        <span class="info-icon" data-tooltip="Max number of Rider II you can train">ⓘ</span>
+      </label>
+      <input type="number" id="training-cap" value="500" />
+    </div>
+  </div>
+</div>
+
+
+  <!-- 🛡️ Section 3: Filters (unchanged) -->
+      <div class="filters-panel">
+        <div class="filter-group">
+          <div class="filter-label" data-group="guard">Guardsmen</div>
+          <div id="guard-type-filters"></div>
+          <div id="guard-level-filters" class="level-buttons"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label" data-group="spec">Specialists</div>
+          <div id="spec-type-filters"></div>
+          <div id="spec-level-filters" class="level-buttons"></div>
+        </div>
+        <div class="filter-group">
+  <div class="filter-label" data-group="merc">Mercenaries</div>
+  <div id="merc-type-filters"></div>
+  <div class="level-row">
+  <div id="merc-level-filters">
+    <button class="level-btn">5</button>
+    <button class="level-btn">6</button>
+    <button class="level-btn">7</button>
+    <button class="level-btn">9</button>
+  </div>
+  <label class="limit-toggle-label">
+    <input type="checkbox" id="limit-by-authority" />
+    Limit by authority
+  </label>
+</div>
+
+</div>
+
+        <div class="filter-group">
+          <div class="filter-label" data-group="monster">Monsters</div>
+          <div id="monster-type-filters"></div>
+          <div id="monster-kind-filters"></div>
+          <div id="monster-level-filters" class="level-buttons"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="right-side">
+      <div class="bookkeeping">
+        <h2>⚔️ Squad Stats</h2>
+        <div class="stat-grid">
+          <div class="stat-block">
+            <div class="stat"><span class="stat-label">Max Squad Health:</span><span class="stat-value" id="bk-max-health">–</span></div>
+            <div class="stat"><span class="stat-label">Leading Squad:</span><span class="stat-value" id="bk-leading">–</span></div>
+            <div class="stat"><span class="stat-label">Leadership Used:</span><span class="stat-value" id="bk-used">–</span></div>
+            <div class="stat"><span class="stat-label">Leadership Left:</span><span class="stat-value" id="bk-left">–</span></div>
+          </div>
+          <div class="stat-block">
+            <div class="stat"><span class="stat-label">Authority Used:</span><span class="stat-value" id="bk-auth-used">–</span></div>
+            <div class="stat"><span class="stat-label">Authority Left:</span><span class="stat-value" id="bk-auth-left">–</span></div>
+            <div class="stat"><span class="stat-label">Dominance Used:</span><span class="stat-value" id="bk-dom-used">–</span></div>
+            <div class="stat"><span class="stat-label">Dominance Left:</span><span class="stat-value" id="bk-dom-left">–</span></div>
+          </div>
+        </div>
+        <div class="stat"><span class="stat-label">Total Silver Cost:</span><span class="stat-value" id="bk-total-silver">–</span></div>
+<div class="stat"><span class="stat-label">Training Time:</span><span class="stat-value" id="bk-total-time">–</span></div>
+<div class="stat"><span class="stat-label">Speed-ups Needed:</span><span class="stat-value" id="bk-speedups">1d: –  1h: –  15m: –</span></div>
+
+      </div>
+
+      <div class="results-grid">
+        <div>
+          <div id="guardsmen-results"></div>
+          <div id="specialist-results"></div>
+        </div>
+        <div>
+          <div id="mercenary-results"></div>
+          <div id="monster-results"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <script src="troops.js"></script>
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
