@@ -1,7 +1,7 @@
 // ==============================
 // ⚙️ Global Config & State
 // ==============================
-const biasFactor = 1.001;
+const biasFactor = 1.004;
 let maxGuardsmenHealth = Infinity;
 const debugMode = false;
 let activeGuardsmen = [];
@@ -56,25 +56,17 @@ const levelColors = {
 // ==============================
 // 🧮 Filter Sets
 // ==============================
-const guardTypes = new Set(['mount']);
-const guardLevels = new Set([5]);
-const specTypes = new Set(['ranged', 'melee', 'mount', 'flying', 'scout']);
-const specLevels = new Set([]);
-const mercTypes = new Set(['epic', 'ranged', 'melee', 'mount', 'flying']);
-const mercLevels = new Set([]);
+
+
+const guardTypes = new Set(['ranged', 'melee', 'mount', 'flying']);
+const guardLevels = new Set([1,2,3]);
+const specTypes = new Set(['melee']);
+const specLevels = new Set([1]);
+const mercTypes = new Set(['epic']);
+const mercLevels = new Set([6]);
 const monsterTypes = new Set(['ranged', 'melee', 'mount', 'flying']);
 const monsterKinds = new Set(['dragon', 'giant', 'elemental', 'beast']);
-const monsterLevels = new Set([]);
-
-// const guardTypes = new Set(['ranged', 'melee', 'mount', 'flying']);
-// const guardLevels = new Set([7, 8, 9]);
-// const specTypes = new Set(['ranged', 'melee', 'mount', 'flying', 'scout']);
-// const specLevels = new Set([5, 6, 7, 8, 9]);
-// const mercTypes = new Set(['epic', 'ranged', 'melee', 'mount', 'flying']);
-// const mercLevels = new Set([5, 6, 7, 8, 9]);
-// const monsterTypes = new Set(['ranged', 'melee', 'mount', 'flying']);
-// const monsterKinds = new Set(['dragon', 'giant', 'elemental', 'beast']);
-// const monsterLevels = new Set([3, 4, 5, 6, 7, 8, 9]);
+const monsterLevels = new Set([3]);
 
 const filterSets = {
   guard: { levels: guardLevels },
