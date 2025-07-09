@@ -1,591 +1,206 @@
 <!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <title>Total Battle Troop Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculate troop stacking and training costs for online RTS Total Battle to determine optimal allocation for spearmen, griffin, monster, mercenary and more to maximize rewards." />
+  <link rel="canonical" href="https://www.pseudostem.com/" />
+  <meta property="og:title" content="Fantasy Battle Builder" />
+  <meta property="og:description" content="Calculate and optimize your troop stack for Total Battle." />
+  <meta property="og:url" content="https://www.pseudostem.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="copyright" content="This is an unofficial tool for Total Battle. Not affiliated with SCOREWARRIOR LIMITED." />
+  <link rel="stylesheet" href="styles.css" />
 
 
-   <!--- Basic Page Needs
-   ================================================== -->
-	<meta charset="utf-8">
-	<title>Pseudostem</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
 
-   <!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/layout.css">
-
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-   <!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="favicon.ico" >
-
-    <style>
-        body, html {
-          height: 100%;
-          margin: 0;
-          font: 400 15px/1.8 "Lato", sans-serif;
-          color: #777;
-        }
-        
-        .bgimg-1, .bgimg-2, .bgimg-3 {
-          position: relative;
-          opacity: 0.95;
-          background-attachment: fixed;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-        
-        }
-        .bgimg-1 {
-          background-image: url("images/intro-bg.jpg");
-          min-height: 100%;
-        }
-        
-        .bgimg-2 {
-          background-image: url("img_parallax2.jpg");
-          min-height: 400px;
-        }
-        
-        .bgimg-3 {
-          background-image: url("img_parallax3.jpg");
-          min-height: 400px;
-        }
-        
-        .caption {
-          position: absolute;
-          left: 0;
-          top: 50%;
-          width: 100%;
-          text-align: center;
-          color: #000;
-        }
-        
-        .caption span.border {
-          background-color: #111;
-          color: #fff;
-          padding: 18px;
-          font-size: 25px;
-          letter-spacing: 10px;
-        }
-        
-        h3 {
-          letter-spacing: 5px;
-          text-transform: uppercase;
-          font: 20px "Lato", sans-serif;
-          color: #111;
-        }
-        
-        /* Turn off parallax scrolling for tablets and phones */
-        @media only screen and (max-device-width: 1024px) {
-          .bgimg-1, .bgimg-2, .bgimg-3 {
-            background-attachment: scroll;
-          }
-        }
-        </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+<body>
+<div class="container">
+ <h1>Troop Calculator Debug</h1>
+  <div class="layout-grid">
+    <div class="left-side">
 
-<body data-spy="scroll" data-target="#nav-wrap">
-
-
-   <!-- Header
-   ================================================== -->
-   <header class="mobile">
-
-      <div class="row">
-
-         <div class="col full">
-
-            <div class="logo">
-               <a href="#"><img alt="" src="images/logo.png"></a>
-            </div>
-
-            <nav id="nav-wrap">
-
-               <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-	            <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
-
-               <ul id="nav" class="nav">
-	               <li><a href="#intro">Home</a></li>
-	               <li><a href="#services">Services</a></li>
-	               <li><a href="#portfolio">Projects</a></li>
-	               <li><a href="#journal">Journal</a></li>
-                  <li><a href="#about">About Us</a></li>
-                  <li><a href="#contact">Contact</a></li>
-               </ul>
-
-            </nav>
-
-         </div>
-
+  <!-- 🎯 Section 1: Leadership / Authority / Dominance -->
+  <div class="filters-panel">
+    <div class="vertical-form">
+      <div class="input-group-inline">
+        <label for="leadership">Leadership</label>
+        <input type="number" id="leadership" value="1000" />
       </div>
-
-   </header> <!-- Header End -->
-
-   <div class="bgimg-1">
-   <!-- Intro Section
-   ================================================== -->
-   <section id="intro">
-
-      <!-- Flexslider Start-->
-	   <div id="intro-slider" class="flexslider">
-
-		   <ul class="slides">
-
-			   <!-- Slide -->
-			   <li>
-				   <div class="row">
-					   <div class="col full">
-						   <div class="slider-text">
-                        <h2>Stay ahead of the future with <span>pseudostem</span>.</h2>
-							   <p>Welcome to pseudostem, where reality is more than just your perception.</span></p>
-						   </div>
-					   </div>
-				   </div>
-			   </li>
-
-            <!-- Slide -->
-			   <li>
-				   <div class="row">
-					   <div class="col full">
-						   <div class="slider-text">
-							   <h2>We specialize in connecting <span style white-space="wrap" overflow-x="auto">you</span> to the world of <span>innovation</span> and <span>discovery</span></h2>
-							   <p>Equipping yourself or your business with cutting-edge research from science, technology, engineering, and mathematics (STEM) isn't as hard as it seems.</p>
-						   </div>
-					   </div>
-				   </div>
-			   </li>
-
-		   </ul>
-	   </div>
-	   <!-- Flexslider End-->
-
-   </section> <!-- Intro Section End-->
-</div>
-
-   <!-- Services Section
-   ================================================== -->
-   <section id="services">
-
-      <div class="row section-head">
-
-         <div class="col one-third">
-            <h2>Services</h2>
-            <p class="desc">
-            </p>
-         </div>
-
-         <div class="col two-thirds">
-            <div class="intro">
-             <p>Our intersciplinary collaborations lead to varied services focused on bringing cutting-edge research 
-               in Sciences, Engineering, Tech, & Math to your personal and professional endeavors.
-              </p>
-            </div>
-         </div>
-
+      <div class="input-group-inline">
+        <label for="authority">Authority</label>
+        <input type="number" id="authority" value="1000" />
       </div>
-
-      <div class="row">
-
-         <div class="services-wrapper">
-
-            <div class="col">
-               <h2><i class="icon-desktop"></i>Digital Privacy</h2>
-               <p>We offer <span style="color:#11ABB0">education</span> and <span style="color:#11ABB0">training</span> 
-                  in data privacy for your personal and professional data. 
-                  Our digital security is only as important as the costs of compromise which are fortunately 
-                  minor with modern banking identity theft protection, 2FA (2-Factor Autentication), and 
-                  HTTPS/SSL (Secure Internet Browsing). However, understanding our digital self can prevent 
-                  headaches and annoying conversations with automated customer service representatives.
-                  Take control of your <b>Digital-Self</b> to empower yourself in the Digital Age.</p>
-            </div>
-
-            <div class="col">
-               <h2><i class="icon-star"></i>Social Media</h2>
-               <p>Finding ourselves was hard enough before the Internet. Now, our personalities are split between
-                  countless social media platforms which can stress us out and often leads to poor well-being. We offer
-                  <span style="color:#11ABB0">social media consulting</span> to align your personality with your online 
-                  presence so you can leverage your social media accounts as a brand of individuality rather than the 
-                  vehicle that loses your <span style="word-wrap:break-word; display:inline-block;"><b>Digital-Self</b>.</span>
-               </p>
-            </div>
-
-            <div class="col m-first">
-               <h2><i class="icon-camera"></i>Applications</h2>
-               <p>Central to our services, our Applications Development Program works to put cutting-edge research into your pocket.
-                  We work to accelerate the life cycle of <span style="color:#11ABB0">discovery-to-product</span> from the academic world by connecting
-                  developers and scientists, bringing ideas into the market polished and accessible to everyone. Check out our project
-                  section to learn more about our active projects or Contact Us to find or submit projects you are interested in.
-               </p>
-            </div>
-
-                     </div> <!-- Services-Wrapper End -->
-
-      </div> <!--end row -->
-
-   </section> <!-- Services Section End -->
-
-<div class="bgimg-1">
-   <!-- Portfolio Section
-   ================================================== -->
-   <section id="portfolio">
-
-      <div class="row section-head">
-         <div class="col full">
-
-            <h2>Projects</h2>
-            <p class="desc">Click on a project to learn more!</p>
-
-            <p class="intro">Our projects are only limted to our communities imaginations. Whether its an application on your phone 
-               or a service for your community, we are here to make Science, Engineering, Tech, & Math work for you. 
-            </p>
-
-         </div>
+      <div class="input-group-inline">
+        <label for="dominance">Dominance</label>
+        <input type="number" id="dominance" value="1000" />
       </div>
+    </div>
+  </div>
 
-      <div class="row">
+  <!-- 💰 Section 2: Troop Cost Estimator -->
+<div class="filters-panel">
+  <div class="section-heading">
+    <h3>Troop Cost Estimator</h3>
+    <p>Input Rider II Cost per Troop to Estimate Training Costs</p>
+  </div>
 
-		   <!-- Portfolio Wrapper -->
-		   <div id="portfolio-wrapper">
-
-			   <div class="col portfolio-item">
-               <div class="item-wrap">
-					   <a href="#" data-reveal-id="modal-01"><img src="images/portfolio/dssr.jpg" alt=""/></a>
-					   <div class="portfolio-item-meta">
-						   <h5><a href="#" data-reveal-id="modal-01">Digital-Self Security Index</a></h5>
-					   </div>
-               </div>
-			   </div>
-
-            <div class="col portfolio-item">
-               <div class="item-wrap">
-					   <a href="#" data-reveal-id="modal-02"><img src="images/portfolio/coffee.jpg" alt=""/></a>
-					   <div class="portfolio-item-meta">
-						   <h5><a href="#" data-reveal-id="modal-02">Senior Center Internet Cafe</a></h5>
-					   </div>
-               </div>
-			   </div>
-
-            <div class="col portfolio-item">
-               <div class="item-wrap">
-					   <a href="#" data-reveal-id="modal-03"><img src="images/portfolio/mind.jpg" alt=""/></a>
-					   <div class="portfolio-item-meta">
-						   <h5><a href="#" data-reveal-id="modal-03">Mind Crawler</a></h5>
-					   </div>
-               </div>
-			   </div>
-
-            <div class="col portfolio-item">
-               <div class="item-wrap">
-					   <a href="#" data-reveal-id="modal-04"><img src="images/portfolio/troll.jpg" alt=""/></a>
-					   <div class="portfolio-item-meta">
-						   <h5><a href="#" data-reveal-id="modal-04">Troll Counter</a></h5>
-					   </div>
-               </div>
-            </div>
-         
-		   </div> <!-- Portfolio Wrapper End -->
-
-
-		</div> <!-- End Row -->
+  <div class="vertical-form">
+    <div class="input-group-inline">
+      <label for="marches">
+        Marches
+        <span class="info-icon" data-tooltip="Number of marches with calculated army">ⓘ</span>
+      </label>
+      <input type="number" id="marches" value="1" min="1" />
     </div>
 
-      <!-- Modal Popup
-	   =========================================================== -->
+    <div class="input-group-inline">
+      <label for="rider-cost">
+        Cost
+        <span class="info-icon" data-tooltip="Silver Cost per 1 Rider II">ⓘ</span>
+      </label>
+      <input type="text" id="rider-cost" value="455" />
+    </div>
 
-      <!-- modal-01 -->
-	   <div id="modal-01" class="reveal-modal">
+<div class="time-row">
+  <div class="time-label">
+    <label for="rider-minutes">Time</label>
+    <span class="info-icon" data-tooltip="Training Cost per 1 Rider II">ⓘ</span>
+  </div>
+  <div class="time-inputs">
+    <input type="text" id="rider-minutes" value="0" maxlength="2" />
+    <span>m</span>
+    <input type="text" id="rider-seconds" value="57" maxlength="2" />
+    <span>s</span>
+  </div>
+</div>
+    <div class="input-group-inline">
+      <label for="training-cap">
+        Training Limit
+        <span class="info-icon" data-tooltip="Max number of Rider II you can train">ⓘ</span>
+      </label>
+      <input type="number" id="training-cap" value="500" />
+    </div>
+  </div>
+</div>
 
-		   <img class="scale-with-grid" src="images/portfolio/modals/dssr.jpg" alt="" />
 
-		   <div class="description-box">
-			   <h4>Digital-Self Security Ratio</h4>
-			   <p>What's your DSSR? It takes more than just brain power to track our digital identity. 
-               The Digital Self Security Ratio helps you stay as protected and private as you want to 
-               be in the Digital Age.</p>
-            <span class="categories"><i class="icon-tag"></i>Technology, Security</span>
-		   </div>
+  <!-- 🛡️ Section 3: Filters (unchanged) -->
+      <div class="filters-panel">
+        <div class="filter-group">
+          <div class="filter-label" data-group="guard">Guardsmen</div>
+          <div id="guard-type-filters"></div>
+          <div id="guard-level-filters" class="level-buttons"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label" data-group="spec">Specialists</div>
+          <div id="spec-type-filters"></div>
+          <div id="spec-level-filters" class="level-buttons"></div>
+        </div>
+        <div class="filter-group">
+  <div class="filter-label" data-group="merc">Mercenaries</div>
+  <div id="merc-type-filters"></div>
+  <div id="merc-type2-filters"></div>
 
-         <div class="link-box">
-            <a href="http://www.pseudostem.com">Details</a>
-		      <a class="close-reveal-modal">Close</a>
-         </div>
+  <div class="level-row">
+  <div id="merc-level-filters">
+    <button class="level-btn">5</button>
+    <button class="level-btn">6</button>
+    <button class="level-btn">7</button>
+    <button class="level-btn">9</button>
+  </div>
+  <label class="limit-toggle-label">
+    <input type="checkbox" id="limit-by-authority" />
+    Limit by authority
+  </label>
+</div>
 
-	   </div><!-- modal-01 End -->
+</div>
 
-      <!-- modal-02 -->
-	   <div id="modal-02" class="reveal-modal">
-
-		   <img class="scale-with-grid" src="images/portfolio/modals/coffee.jpg" alt="" />
-
-		   <div class="description-box">
-			   <h4>Senior Center Internet Cafe</h4>
-			   <p>Losing both our mobility and our friends can trap us in our recliners and hospital beds. 
-               The Senior Center Club helps the Greatest Generation use technology and social media to 
-               connect with old friends and join new communities to play their favorite games together on the Internet.  </p>
-            <span class="categories"><i class="icon-tag"></i>Technology, Education, Outreach</span>
-         </div>
-
-         <div class="link-box">
-            <a href="http://www.pseudostem.com">Details</a>
-		      <a class="close-reveal-modal">Close</a>
-         </div>
-
-	   </div> <!-- modal-02 End -->
-
-      <!-- modal-03 -->
-	   <div id="modal-03" class="reveal-modal">
-
-		   <img class="scale-with-grid" src="images/portfolio/modals/mind.jpg" alt="" />
-
-		   <div class="description-box">
-			   <h4>Mind Crawler</h4>
-			   <p>It's easy to fall into that existential crisis about what we are supposed to do with our lives
-               but we may already have the answer without realizing it. Mind Crawler uses cutting-edge Machine Learning
-               techniques to illuminate the hidden messages our subconscious has been trying to show us all along.
-            </p>
-            <span class="categories"><i class="icon-tag"></i>Application, Artificial Intelligence, Personality </span>
-         </div>
-
-         <div class="link-box">
-            <a href="http://www.pseudostem.com">Details</a>
-		      <a class="close-reveal-modal">Close</a>
-         </div>
-
-	   </div> <!-- modal-03 End -->
-
-      <!-- modal-04 -->
-	   <div id="modal-04" class="reveal-modal">
-
-		   <img class="scale-with-grid" src="images/portfolio/modals/troll.jpg" alt="" />
-
-		   <div class="description-box">
-			   <h4>Troll Counter</h4>
-			   <p>How many times have you shared Fake News? Troll Counter plugs into your social media to
-               rank you among your friends to see who gets trolled the most! #stopFakeNews
-            </p>
-            <span class="categories"><i class="icon-tag"></i>Social Media, Application, Social Good</span>
-         </div>
-
-         <div class="link-box">
-            <a href="http://www.pseudostem.com">Details</a>
-		      <a class="close-reveal-modal">Close</a>
-         </div>
-
-      </div> <!-- modal-04 End -->
-      
-   </section> <!-- Portfolio End -->
-
-   <!-- Journal Section
-   ================================================== -->
-   <section id="journal">
-
-      <div class="row section-head">
-         <div class="col full">
-            <h2>Journal</h2>
-            <p class="desc">Coming Soon: Our Journal featuring Articles and Essays from our Community!</p>
-         </div>
+        <div class="filter-group">
+          <div class="filter-label" data-group="monster">Monsters</div>
+          <div id="monster-type-filters"></div>
+          <div id="monster-kind-filters"></div>
+          <div id="monster-level-filters" class="level-buttons"></div>
+        </div>
       </div>
 
+    </div>
 
-   </section>  <!-- Journal Section End -->
-
-
-   <!-- About Section
-   ================================================== -->
-   <section id="about">
-
-      <div class="row section-head">
-
-         <div class="col one-fourth">
-            <h2>About Us</h2>
-            <p class="desc"></p>
-         </div>
-
-         <div class="col three-fourths">
-             <p class="intro">Our mission is to <span style="color:#11ABB0">translate</span> the world's information into accessible
-               and useful knowledge.<br><br>
-                <span style="color:#11ABB0">Pseudostem</span> is an information and technology organization dedicated to integrating
-                discoveries in research into our everyday lives.<br><br>
-                We <span style="color:#11ABB0">build solutions</span> and <span style="color:#11ABB0">offer services</span> 
-                to help the world <span style="color:#11ABB0">filter</span> and <span style="color:#11ABB0">capitalize</span> 
-                on the staggering amount of information imparted on our daily lives.<br><br>
-                We <span style="color:#11ABB0">connect</span> researchers and industry, scientists and communities, students and
-                entrepreneurs in an effort to learn from one another and build a better future.
-
-             </p>
-         </div>
+    <div class="right-side">
+      <div class="bookkeeping">
+        <h2>⚔️ Squad Stats</h2>
+        <div class="stat-grid">
+          <div class="stat-block">
+            <div class="stat"><span class="stat-label">Max Squad Health:</span><span class="stat-value" id="bk-max-health">–</span></div>
+            <div class="stat"><span class="stat-label">Leading Squad:</span><span class="stat-value" id="bk-leading">–</span></div>
+            <div class="stat"><span class="stat-label">Leadership Used:</span><span class="stat-value" id="bk-used">–</span></div>
+            <div class="stat"><span class="stat-label">Leadership Left:</span><span class="stat-value" id="bk-left">–</span></div>
+          </div>
+          <div class="stat-block">
+            <div class="stat"><span class="stat-label">Authority Used:</span><span class="stat-value" id="bk-auth-used">–</span></div>
+            <div class="stat"><span class="stat-label">Authority Left:</span><span class="stat-value" id="bk-auth-left">–</span></div>
+            <div class="stat"><span class="stat-label">Dominance Used:</span><span class="stat-value" id="bk-dom-used">–</span></div>
+            <div class="stat"><span class="stat-label">Dominance Left:</span><span class="stat-value" id="bk-dom-left">–</span></div>
+          </div>
+        </div>
+        <div class="stat"><span class="stat-label">Total Silver Cost:</span><span class="stat-value" id="bk-total-silver">–</span></div>
+<div class="stat"><span class="stat-label">Training Time:</span><span class="stat-value" id="bk-total-time">–</span></div>
+<div class="stat"><span class="stat-label">Speed-ups Needed:</span><span class="stat-value" id="bk-speedups">1d: –  1h: –  15m: –</span></div>
 
       </div>
 
-   </section> <!-- About Section End-->
-
-   <!-- Call-to-Action Section
-   ================================================== -->
-   <section id="call-to-action">
-
-      <div class="row">
-
-         <div class="col three-fourths">
-
-            <h2><a href="#contact">Get Involved!</a></h2>
-            <p>Looking to break into research and technology? Want to publish in our Journal? Or just have a question you want answered? We are always happy to collaborate and bridge our community with yours. 
-			
-         </div>
-
-         <div class="col one-fourth action">
-
-            <a href="#contact" class="button">Contact Us</a>
-
-         </div>
-
+      <div class="results-grid">
+        <div>
+          <div id="guardsmen-results"></div>
+          <div id="specialist-results"></div>
+        </div>
+        <div>
+          <div id="mercenary-results"></div>
+          <div id="monster-results"></div>
+        </div>
       </div>
+    </div>
+  </div>
+
+ <footer style="text-align: center; padding: 1rem; font-size: 0.8rem; color: #888;">
+  <a href="#" onclick="document.getElementById('credits-modal').style.display='block'" style="color: #888; text-decoration: underline;">Icon Credits</a>
+  <p style="font-size: 0.75rem; color: #777;">
+  This tool is an unofficial fan-made application and is not affiliated with, endorsed by, or sponsored by SCOREWARRIOR LIMITED or the Total Battle game. All trademarks and game content are the property of their respective owners.
+</p>
+
+</footer>
+
+<!-- Hidden Modal -->
+<div id="credits-modal" style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #ccc; padding: 1.5rem; border-radius: 8px; max-width: 400px; z-index: 1000;">
+  <h3 style="margin-top: 0;">Icon Credits</h3>
+  <ul style="list-style: none; padding-left: 0; font-size: 0.85rem;">
+    <li>Squid — <a href="https://www.svgrepo.com/page/licensing/#CC0" target="_blank">SVGRepo (CC0)</a></li>
+    <li>Dragon — <a href="https://www.svgrepo.com/page/licensing/#CC%20Attribution" target="_blank">vectordoodle (CC Attribution)</a></li>
+    <li>Bow — <a href="https://www.svgrepo.com/page/licensing/#CC0" target="_blank">SVGRepo (CC0)</a></li>
+    <li>Target — <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">Lima Studio (CC BY 3.0)</a></li>
+    <li>Guard Shield — <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">Paomedia (CC BY 3.0)</a></li>
+    <li>Merc Shield — <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">Paomedia (CC BY 3.0)</a></li>
+    <li>Monster — <a href="https://www.iconfinder.com/Icojam" target="_blank">Icojam (Iconfinder)</a></li>
+  </ul>
+  <button onclick="document.getElementById('credits-modal').style.display='none'" style="margin-top: 1rem; background: #333; color: #ccc; border: none; padding: 0.5rem 1rem; border-radius: 4px;">Close</button>
+</div>
+
+<footer style="text-align: center; font-size: 0.8rem; color: #777;">
+  © 2025 Pseudostem. All rights reserved.
+</footer>
 
 
-   </section> <!-- Call-to-Action Section End -->
 
-   <!-- FUTURE DEV
-   // Map Section
-   ==================================================\\
-   <section id="map">
+</div>
 
-      <p class="map-error">Something went wrong... Unable to load map... Please try to enable javascript</p>
-
-   </section> <//Map Section End\\
-    -->
-    <!-- Contact Section
-   ================================================== -->
-   <section id="contact">
-
-      <div class="row section-head">
-         <div class="col full">
-            <h2>Contact Us</h2>
-            <p class="desc">Get in touch with us.</p>
-         </div>
-      </div>
-
-      <div class="row">
-
-         <div class="col g-7">
-
-            <!-- form -->
-            <form name="contactForm" id="contactForm" method="post" action="mailto:pseudostemist@gmail.com">
-					<fieldset>
-
-                  <div>
-						   <label for="contactName">Name <span class="required">*</span></label>
-						   <input name="contactName" type="text" id="contactName" size="35" value="" />
-                  </div>
-
-                  <div>
-						   <label for="contactEmail">Email <span class="required">*</span></label>
-						   <input name="contactEmail" type="text" id="contactEmail" size="35" value="" />
-                  </div>
-
-                  <div>
-						   <label for="contactSubject">Subject</label>
-						   <input name="contactSubject" type="text" id="contactSubject" size="35" value="" />
-                  </div>
-
-                  <div>
-                     <label  for="contactMessage">Message <span class="required">*</span></label>
-                     <textarea name="contactMessage"  id="contactMessage" rows="15" cols="50" ></textarea>
-                  </div>
-
-                  <div>
-                     <button class="submit">Submit</button>
-                     <span id="image-loader">
-                        <img src="images/loader.gif" alt="" />
-                     </span>
-                  </div>
-
-					</fieldset>
-				</form> <!-- Form End -->
-
-            <!-- contact-warning -->
-            <div id="message-warning"></div>
-            <!-- contact-success -->
-				<div id="message-success">
-               <i class="icon-ok"></i>Your message was sent, thank you!<br />
-				</div>
-
-         </div>
-
-
-         <aside class="col g-5">
-
-            <h3>Contact Information</h3>
-
-            <p>We are located in Boston, Masschusetts (US) but work remotely across the globe.</p>
-
-            <p>
-            Pseudostem <br />
-            Boston, MA<br />
-            </p>
-
-            <p>
-            Email: pseudostem [@] gmail.com
-            </p><br />
-
-         </aside>
-
-      </div>
-
-   </section> <!-- Contact Section End-->
-
-   <!-- footer
-   ================================================== -->
-   <footer>
-
-      <div class="row">
-
-         <div class="col g-7">
-            <ul class="copyright">
-               <li>&copy; 2014 Kreative</li>
-               <li>Design by <a href="http://www.styleshout.com/" title="Styleshout">Styleshout</a></li>               
-                <li>&copy; 2019 Pseudostem</li>
-                <li>Disclaimer: All content published on this website is property of &copy; Pseudostem excluding to website source code and images. </a></li>               
-             </ul>
-         </div>
-
-         <div class="col g-5 pull-right">
-            <ul class="social-links">
-               <li><a href="#"><i class="icon-facebook"></i></a></li>
-               <li><a href="https://twitter.com/pseudostemist"><i class="icon-twitter"></i></a></li>
-               <li><a href="#"><i class="icon-google-plus-sign"></i></a></li>
-               <li><a href="#"><i class="icon-linkedin"></i></a></li>
-               <li><a href="#"><i class="icon-skype"></i></a></li>
-               <li><a href="#"><i class="icon-rss-sign"></i></a></li>
-            </ul>
-         </div>
-
-      </div>
-
-   </footer> <!-- Footer End-->
-
-   <!-- Java Script
-   ================================================== -->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-
-   <script src="js/scrollspy.js"></script>
-   <script src="js/jquery.flexslider.js"></script>
-   <script src="js/jquery.reveal.js"></script>
-   <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
-   <script src="js/gmaps.js"></script>
-   <script src="js/init.js"></script>
-   <script src="js/smoothscrolling.js"></script>
+  <script src="troops.js"></script>
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
 
 </body>
-
 </html>
