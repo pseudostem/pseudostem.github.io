@@ -162,6 +162,8 @@ const mercenaryData = [
   { lvl: 9, type: 'ranged', type2: 'spec', name: 'Pounder', authority: 1, health: 33000 },
   { lvl: 9, type: 'flying', type2: 'guard', type3: 'swarm', name: 'Wasp-Man Leader', authority: 1, health: 32400 },
   { lvl: 9, type: 'ranged', type2: 'guard', type3: 'swarm', name: 'Grim Stalker Leader', authority: 1, health: 31800 },
+  { lvl: 9, type: 'hunt', type2: 'guard', name: 'Elder Bounty Hunter', authority: 1, health: 75000 },
+
 
   // 🔹 Level 7
   { lvl: 7, type: 'ranged', type2: 'demon', name: 'Fire Lord', authority: 164, health: 1680000 },

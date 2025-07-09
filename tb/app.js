@@ -1,7 +1,7 @@
 // ==============================
 // ⚙️ Global Config & State
 // ==============================
-const biasFactor = 1.004;
+const biasFactor = 1.001;
 let maxGuardsmenHealth = Infinity;
 const debugMode = false;
 let activeGuardsmen = [];
@@ -26,11 +26,18 @@ const iconNameMap = {
   flying: 'bird',
   scout: 'binoculars',
   epic: 'sparkle',
-  dragon: 'fire',
-  giant: 'armchair',
+  beast: 'paw-print',
+  guard: 'shield',
+  spec: 'target',
+  cursed: 'skull',
+  elves: 'leaf',
+  demon: 'flame',
+  barbarian: 'axe',
+  undead: 'ghost',
   elemental: 'wind',
-  beast: 'paw-print'
+  swarm: 'bug'
 };
+
 
 function getIconHTML(key, context = '') {
   if (typeof key === 'number' || !isNaN(+key)) return '';
@@ -56,13 +63,13 @@ const levelColors = {
 // ==============================
 // 🧮 Filter Sets
 // ==============================
-
-
 const guardTypes = new Set(['ranged', 'melee', 'mount', 'flying']);
 const guardLevels = new Set([1,2,3]);
-const specTypes = new Set(['melee']);
-const specLevels = new Set([1]);
+const specTypes = new Set(['ranged', 'melee', 'mount', 'flying', 'scout']);
+const specLevels = new Set([1,2]);
 const mercTypes = new Set(['epic']);
+const mercType2s = new Set(['guard']);
+const mercType3s = new Set();
 const mercLevels = new Set([6]);
 const monsterTypes = new Set(['ranged', 'melee', 'mount', 'flying']);
 const monsterKinds = new Set(['dragon', 'giant', 'elemental', 'beast']);
@@ -72,7 +79,9 @@ const filterSets = {
   guard: { levels: guardLevels },
   spec: { levels: specLevels },
   merc: { levels: mercLevels },
-  monster: { levels: monsterLevels }
+  monster: { levels: monsterLevels },
+  mercType2: { levels: mercType2s },
+  mercType3: { levels: mercType3s }
 };
 
 document.querySelectorAll('.filter-label').forEach(label => {
@@ -124,6 +133,29 @@ function getTroopCount(group, name, countMap) {
   return squadOverrides[group]?.get(id) === 0 ? 0 : (countMap.get(id) || 0);
 }
 
+function autoActivateSwarmIfNeeded() {
+  const guardIsOn = mercType2s.has('guard');
+  const swarmIsOn = mercType2s.has('swarm');
+
+  if (!guardIsOn || swarmIsOn) return;
+
+  const hasSwarmGuards = mercenaryData.some(m =>
+    m.type2 === 'guard' &&
+    (Array.isArray(m.type3) ? m.type3.includes('swarm') : m.type3 === 'swarm')
+  );
+
+  if (hasSwarmGuards) {
+    mercType2s.add('swarm');
+
+    // Visually activate the swarm button
+    document.querySelectorAll('#merc-type2-filters .filter-btn').forEach(btn => {
+      if (btn.dataset.val === 'swarm') {
+        btn.classList.add('active');
+      }
+    });
+  }
+}
+
 // ==============================
 // 🚀 App Bootstrap
 // ==============================
@@ -173,9 +205,47 @@ function renderResult(label, items) {
         border-left: 4px solid ${baseColor}; padding-left: 10px;
       `.trim();
 
-      const attackIcon = getIconHTML(t.attack || t.type || t.group, 'troop');
-      const kindIcon = group === 'monster' ? getIconHTML(t.type, 'troop') : '';
-      const iconHTML = `${kindIcon}${attackIcon}`;
+      let iconHTML = '';
+
+if (group === 'monster') {
+  iconHTML = [t.type, t.attack]
+    .filter(Boolean)
+    .map(type => getIconHTML(type, 'troop'))
+    .join('');
+} else if (group === 'mercenary') {
+  // ✅ Reorder icons for epic-type mercs: type before type2
+  const types = t.type === 'epic'
+    ? [
+        ...(Array.isArray(t.type3) ? t.type3 : [t.type3]),
+        t.type,
+        t.type2
+      ]
+    : [
+        ...(Array.isArray(t.type3) ? t.type3 : [t.type3]),
+        t.type2,
+        t.type
+      ];
+
+  const filteredTypes = types.filter(Boolean);
+
+  // ✅ Check for the special dragon + flying combo
+  const hasDragonFlyingCombo = filteredTypes.includes('dragon') && filteredTypes.includes('flying');
+
+  // ✅ Add a special class if both are present
+  iconHTML = `<span class="icon-cluster ${hasDragonFlyingCombo ? 'combo-dragon-flying' : ''}">` +
+    filteredTypes.map(type => {
+      const safeKey = type.replace(/[^a-z0-9_-]/gi, '');
+      const icon = getIconHTML(type, 'troop');
+      return `<span class="icon-wrapper icon--${safeKey} context--troop">${icon}</span>`;
+    }).join('') +
+    `</span>`;
+}
+
+ else {
+    iconHTML = getIconHTML(t.attack || t.type || t.group, 'troop');
+  }
+
+
 
       const override = squadOverrides[group]?.get(id);
       const shown = override === 0 ? 0 : t.count;
@@ -203,6 +273,7 @@ function setupFilterButtons() {
   const mTypes = ['melee', 'ranged', 'mount', 'flying'];
   const mKinds = ['dragon', 'elemental', 'giant', 'beast'];
   const mercT = ['epic', 'melee', 'ranged', 'mount', 'flying'];
+  const mercT2 = ['guard', 'spec', 'swarm', 'cursed', 'elves', 'demon', 'barbarian', 'undead', 'dragon', 'elemental'];
   const specT = ['melee', 'ranged', 'mount', 'flying', 'scout'];
 
   const toggle = (set, val) => set.has(val) ? set.delete(val) : set.add(val);
@@ -213,6 +284,7 @@ function setupFilterButtons() {
     { el: '#spec-type-filters', items: specT, set: specTypes, cb: calculateGuardsmen },
     { el: '#spec-level-filters', items: [1,2,3,4,5,6,7,8,9], set: specLevels, cb: calculateGuardsmen },
     { el: '#merc-type-filters', items: mercT, set: mercTypes, cb: calculateMercenaries },
+    { el: '#merc-type2-filters', items: mercT2, set: mercType2s, cb: calculateMercenaries },
     { el: '#merc-level-filters', items: [5,6,7,9], set: mercLevels, cb: calculateMercenaries },
     { el: '#monster-type-filters', items: mTypes, set: monsterTypes, cb: calculateMonsters },
     { el: '#monster-kind-filters', items: mKinds, set: monsterKinds, cb: calculateMonsters },
@@ -244,10 +316,26 @@ function setupFilterButtons() {
       btn.onclick = () => {
         const raw = btn.dataset.val;
         const val = isNaN(+raw) ? raw : +raw;
-        toggle(set, val);
-        btn.classList.toggle('active');
+
+        const isActive = set.has(val);
+        if (isActive) {
+          set.delete(val);
+          btn.classList.remove('active');
+        } else {
+          set.add(val);
+          btn.classList.add('active');
+        }
+
         cb();
+
+        // 🐛 Auto-activate swarm if guard was toggled on
+        if (el === '#merc-type2-filters' && val === 'guard') {
+          autoActivateSwarmIfNeeded();
+          calculateMercenaries(); // re-run with swarm now active
+        }
       };
+
+
     });
   });
 }
@@ -427,7 +515,7 @@ function formatTime(seconds) {
 
 
 // ==============================
-// 🛡️ Guardsmen & Specialists
+// 🛡️ Calculate Guardsmen & Specialists
 // ==============================
 function calculateGuardsmen() {
   const leadership = +document.getElementById('leadership').value || 0;
@@ -484,17 +572,44 @@ function calculateGuardsmen() {
 }
 
 // ==============================
-// 💰 Mercenaries
+// 💰 Calculate Mercenaries
 // ==============================
+
 function calculateMercenaries() {
   const limitByAuthority = document.getElementById('limit-by-authority')?.checked;
   const group = 'mercenary';
   const authorityCap = +document.getElementById('authority').value || 0;
   const healthCapPerSquad = window.maxGsHealth || Infinity;
+  const mercT2 = ['guard', 'spec', 'cursed', 'elves', 'demon', 'barbarian', 'undead', 'dragon', 'elemental'];
+  
 
-  const eligible = mercenaryData.filter(m =>
-    mercLevels.has(m.lvl) && mercTypes.has(m.type)
-  );
+
+  const hasType2Filter = mercType2s.size > 0;
+const hasType3Filter = mercType3s.size > 0;
+
+const eligible = mercenaryData.filter(m => {
+  const matchesType = mercTypes.has(m.type);
+  const matchesLevel = mercLevels.has(m.lvl);
+
+  const isSwarm = Array.isArray(m.type3)
+    ? m.type3.includes('swarm')
+    : m.type3 === 'swarm';
+
+  const isSwarmSelected = mercType2s.has('swarm');
+  const isGuardSelected = mercType2s.has('guard');
+
+  const isGuard = m.type2 === 'guard';
+
+  const isOtherType2 = mercType2s.has(m.type2) && m.type2 !== 'guard' && m.type2 !== 'swarm';
+
+  const includeBecauseOfGuard = isGuardSelected && isGuard && !isSwarm;
+  const includeBecauseOfSwarm = isSwarmSelected && isSwarm;
+
+  const matchesEither = includeBecauseOfGuard || includeBecauseOfSwarm || isOtherType2;
+
+  return matchesLevel && matchesType && mercType2s.size > 0 && matchesEither;
+});
+
 
   const active = eligible.filter(m =>
     !squadOverrides[group].has(`${group}-${m.name}`)
@@ -569,18 +684,20 @@ function calculateMercenaries() {
   document.getElementById('bk-auth-left').textContent = Math.max(0, authorityRemaining).toLocaleString();
 
   if (debugMode) {
-    console.group("🧪 Mercenary Allocation Debug");
-    console.log("Authority Cap:", authorityCap);
-    console.log("Used:", totalAuthorityUsed);
-    console.log("Remaining:", authorityRemaining);
-    console.groupEnd();
-  }
+  console.log("mercLevels:", [...mercLevels]);
+  console.log("mercTypes:", [...mercTypes]);
+  console.log("mercType2s:", [...mercType2s]);
+  console.log("mercType3s:", [...mercType3s]);
+  console.log("Sample merc:", mercenaryData[0]);
+}
+
+
 
   window.allocatedMercenaries = result;
 }
 
 // ==============================
-// 🐉 Monsters
+// 🐉 Calculate Monsters
 // ==============================
 function calculateMonsters() {
   const group = 'monster';
@@ -674,14 +791,6 @@ function calculateMonsters() {
   document.getElementById('bk-dom-used').textContent = totalDominanceUsed.toLocaleString();
   document.getElementById('bk-dom-left').textContent = Math.max(0, dominanceRemaining).toLocaleString();
 
-  if (debugMode) {
-    console.group("🧪 Monster Allocation Debug");
-    console.log("Dominance Cap:", dominanceCap);
-    console.log("Used:", totalDominanceUsed);
-    console.log("Remaining:", dominanceRemaining);
-    console.groupEnd();
-  }
-
   window.allocatedMonsters = result;
 }
 
@@ -731,3 +840,4 @@ function updateResourceStats() {
   document.getElementById('bk-dom-used').textContent = usedDominance.toLocaleString();
   document.getElementById('bk-dom-left').textContent = Math.max(0, dom - usedDominance).toLocaleString();
 }
+

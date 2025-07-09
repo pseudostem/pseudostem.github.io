@@ -1,6 +1,3 @@
-/* ==================
-   🧱 Layout & Panels
-   ================== */
 :root {
   --bg: #0e101c;
   --panel: #1a1d2e;
@@ -372,6 +369,59 @@ body {
   transform: scale(1.2) translate(0, 0);
 }
 
+.context--troop.icon--swarm svg {
+  transform: scale(2) translate(0, 0);
+}
+
+.context--troop.icon--guard svg,
+.context--troop.icon--spec svg,
+.context--troop.icon--cursed svg,
+.context--troop.icon--elves svg,
+.context--troop.icon--demon svg,
+.context--troop.icon--barbarian svg,
+.context--troop.icon--undead svg,
+.context--troop.icon--elemental svg,
+.context--troop.icon--dragon svg {
+  transform: scale(1.2) translate(0, 0);
+}
+
+.troop-label .icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.troop-label .icon-wrapper svg,
+.troop-label .icon-wrapper i {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.combo-dragon-flying .icon-wrapper.icon--flying {
+  transform: translateX(0.em);
+}
+.combo-dragon-flying .icon-wrapper.icon--dragon svg {
+  transform: translateX(0.3em);
+}
+
+.icon-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;              /* space between icons */
+  margin-right: 6px;     /* space between icons and troop name */
+  transform: translateX(2px); /* nudge the whole group right */
+}
+
+.icon-cluster .icon-wrapper.icon--ranged svg {
+  transform: scale(2.5) translate(25%, 0);
+}
+
+
 .header-icon {
   display: inline-block;
   width: 1em;
@@ -384,6 +434,18 @@ body {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.multi-icon-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px; /* tighter spacing between icons */
+}
+
+.multi-icon-compact .icon-wrapper {
+  margin-right: 0 !important; /* override any inherited spacing */
+  width: 1em;
+  height: 1em;
 }
 
 /* ==================
